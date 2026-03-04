@@ -77,7 +77,7 @@ Panic Button Gintara adalah aplikasi web modern yang dirancang untuk memberikan 
 ### 1. Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/BM-LEOZARD/panic-button-gintara.git
 cd panic-button-gintara
 ```
 
