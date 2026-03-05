@@ -155,9 +155,9 @@ BROADCAST_CONNECTION=reverb
 FILESYSTEM_DISK=local
 QUEUE_CONNECTION=database
 
-REVERB_APP_ID=panic-button-app
-REVERB_APP_KEY=panicbuttonkey123
-REVERB_APP_SECRET=panicbuttonsecret123
+REVERB_APP_ID=your-app-id
+REVERB_APP_KEY=your-app-key
+REVERB_APP_SECRET=your-app-secret
 REVERB_HOST=127.0.0.1
 REVERB_PORT=9090
 
@@ -260,12 +260,12 @@ Atau dengan PHPUnit:
 ```
 
 ## 📝 Environment Variables
-
+AWr9JaTuECNHo4naZxHf
 | Variable         | Deskripsi                   | Example                |
 | ---------------- | --------------------------- | ---------------------- |
-| `FONNTE_TOKEN`   | Token Fonnte untuk WhatsApp | `AWr9JaTuECNHo4naZxHf` |
+| `FONNTE_TOKEN`   | Token Fonnte untuk WhatsApp | `ABc1DeFgHIJKl2mnOpQr` |
 | `MQTT_HOST`      | MQTT Broker Host            | `broker.emqx.io`       |
-| `REVERB_APP_KEY` | WebSocket App Key           | `panicbuttonkey123`    |
+| `REVERB_APP_KEY` | WebSocket App Key           | `abc123`    |
 | `MAIL_USERNAME`  | Email SMTP                  | `user@example.com`  |
 | `DB_DATABASE`    | Nama database               | `panic-button` |
 
