@@ -25,6 +25,7 @@ class FonnteMessageTemplate
         $pesan .= "2. Segera ganti password setelah login pertama\n";
         $pesan .= "3. Pastikan perangkat Panic Button Anda sudah aktif\n\n";
         $pesan .= "⚠️ _Jangan bagikan informasi akun Anda kepada siapapun._\n\n";
+        $pesan .= "🔗 Login ke akun Anda: https://sos.gintara.net/login\n\n";
         $pesan .= "_Salam,_\n";
         $pesan .= "_Tim Gintara Net_ 🚨";
         return $pesan;
@@ -78,7 +79,8 @@ class FonnteMessageTemplate
         $pesan .= "📍 *Koordinat Lokasi:*\n";
         $pesan .= "https://maps.google.com/?q={$latitude},{$longitude}\n\n";
         $pesan .= "🕐 *Waktu Trigger:* {$waktu} WIB\n\n";
-        $pesan .= "⚡ Segera login ke sistem dan ambil tugas ini.\n\n";
+        $pesan .= "⚡ Segera login ke sistem dan ambil tugas ini:\n";
+        $pesan .= "🔗 https://sos.gintara.net/portal-login\n\n";
         $pesan .= "_Notifikasi otomatis — Sistem Panic Button Gintara Net_ 🚨";
         return $pesan;
     }
@@ -156,6 +158,7 @@ class FonnteMessageTemplate
         $pesan .= "• Wilayah  : {$namaWilayah}\n\n";
         $pesan .= "✅ Nomor Anda kini telah terhubung dengan sistem Panic Button Gintara Net.\n\n";
         $pesan .= "⚠️ _Jika Anda tidak merasa melakukan perubahan ini, segera hubungi admin wilayah Anda._\n\n";
+        $pesan .= "🔗 Login ke akun Anda: https://sos.gintara.net/login\n\n";
         $pesan .= "_Salam,_\n";
         $pesan .= "_Tim Gintara Net_ 🚨";
         return $pesan;
@@ -179,6 +182,7 @@ class FonnteMessageTemplate
         $pesan .= "• Wilayah : {$namaWilayah}\n\n";
         $pesan .= "🔒 _Tips Keamanan: Jangan bagikan password Anda kepada siapapun, termasuk kepada admin._\n\n";
         $pesan .= "⚠️ _Jika Anda tidak merasa mengubah password, segera hubungi admin wilayah Anda dan amankan akun Anda._\n\n";
+        $pesan .= "🔗 Login ke akun Anda: https://sos.gintara.net/login\n\n";
         $pesan .= "_Salam,_\n";
         $pesan .= "_Tim Gintara Net_ 🚨";
         return $pesan;
@@ -206,6 +210,7 @@ class FonnteMessageTemplate
         $pesan .= "• Wilayah     : {$namaWilayah}\n\n";
         $pesan .= "✅ Gunakan email baru Anda untuk login ke sistem berikutnya.\n\n";
         $pesan .= "⚠️ _Jika Anda tidak merasa melakukan perubahan ini, segera hubungi admin wilayah Anda._\n\n";
+        $pesan .= "🔗 Login ke akun Anda: https://sos.gintara.net/login\n\n";
         $pesan .= "_Salam,_\n";
         $pesan .= "_Tim Gintara Net_ 🚨";
         return $pesan;
@@ -228,6 +233,7 @@ class FonnteMessageTemplate
         $pesan .= "• Perangkat Panic Button Anda tidak aktif\n";
         $pesan .= "• Seluruh data tetap tersimpan dengan aman\n\n";
         $pesan .= "💬 Jika Anda merasa ini adalah kesalahan atau ingin mengajukan reaktivasi, silakan hubungi tim administrator Gintara Net.\n\n";
+        $pesan .= "🔗 Login ke akun Anda: https://sos.gintara.net/login\n\n";
         $pesan .= "_Salam,_\n";
         $pesan .= "_Tim Gintara Net_ 🚨";
         return $pesan;
@@ -273,6 +279,7 @@ class FonnteMessageTemplate
         $pesan .= "• Perangkat Panic Button Anda kini aktif kembali\n";
         $pesan .= "• Seluruh riwayat dan data Anda tetap tersimpan\n\n";
         $pesan .= "💬 Jika ada pertanyaan atau kendala saat login, silakan hubungi tim administrator Gintara Net.\n\n";
+        $pesan .= "🔗 Login ke akun Anda: https://sos.gintara.net/login\n\n";
         $pesan .= "_Salam,_\n";
         $pesan .= "_Tim Gintara Net_ 🚨";
         return $pesan;

@@ -23,6 +23,8 @@
         'warning' => 'Jika Anda tidak merasa melakukan perubahan ini, segera hubungi admin wilayah Anda.',
     ])
 
+    @include('emails.partials.login-button')
+
     <p style="margin:0;font-size:14px;color:#64748b;line-height:1.7;">
         Akun Anda tetap aman selama Anda tidak membagikan informasi login kepada siapapun.
     </p>

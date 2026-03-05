@@ -207,6 +207,11 @@
                 color: #265ed7;
             }
 
+            .drop-zone.required-error {
+                border-color: #dc2626;
+                background: #fff1f2;
+            }
+
             .preview-list {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -376,7 +381,6 @@
             </div>
         @endif
 
-        {{-- Banner darurat + timer --}}
         <div class="alert-darurat">
             <div class="d-flex align-items-center justify-content-between flex-wrap" style="gap:12px;">
                 <div>
@@ -403,10 +407,8 @@
         </div>
 
         <div class="row-responsive">
-            {{-- KOLOM KIRI: Info Pelanggan --}}
             <div class="col-left-responsive">
 
-                {{-- Identitas --}}
                 <div class="card-box pd-20 mb-20">
                     <div class="section-head"><i class="icon-copy bi bi-person-badge-fill mr-2"></i>Identitas Pelanggan
                     </div>
@@ -444,17 +446,12 @@
                                 <div class="info-label"><i class="icon-copy bi bi-pin-map-fill mr-1"></i>Wilayah</div>
                                 <div class="info-value">
                                     {{ $alarm->panicButton->wilayah->nama }}
-                                    <span
-                                        style="font-size:11px; color:#265ed7; background:#e7ebf5; border-radius:50px; padding:2px 8px; margin-left:4px;">
-                                        {{ $alarm->panicButton->wilayah->kode_wilayah }}
-                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- Alamat --}}
                 <div class="card-box pd-20 mb-20">
                     <div class="section-head"><i class="icon-copy bi bi-house-door-fill mr-2"></i>Alamat & Lokasi</div>
                     <div class="row">
@@ -500,7 +497,7 @@
                     @if ($alarm->lokasi)
                         <div style="margin-top:16px;">
                             <div id="miniMap" onclick="loadMap()">
-                                <i class="icon-copy bi bi-map mr-1"></i>🗺️ Klik untuk tampilkan lokasi di peta
+                                <i class="icon-copy bi bi-map mr-1"></i>Klik untuk tampilkan lokasi di peta
                             </div>
                             <small style="color:#94a3b8; font-size:11px;">
                                 <i class="icon-copy bi bi-info-circle mr-1"></i>Peta dimuat saat diklik.
@@ -509,7 +506,6 @@
                     @endif
                 </div>
 
-                {{-- FOTO DOKUMENTASI --}}
                 <div class="card-box pd-20 mb-20">
                     <div class="section-head">
                         <i class="icon-copy bi bi-camera-fill mr-2"></i>Foto Dokumentasi
@@ -519,7 +515,6 @@
                         </span>
                     </div>
 
-                    {{-- Grid foto yang sudah ada --}}
                     @if ($alarm->dokumenFoto->count() > 0)
                         <div class="foto-grid">
                             @foreach ($alarm->dokumenFoto as $foto)
@@ -533,7 +528,6 @@
                                         </div>
                                     @endif
 
-                                    {{-- Hapus foto dengan konfirmasi --}}
                                     <form method="POST" action="{{ route('admin.tugas.hapus-foto', $foto->id) }}"
                                         class="hapus-foto-form">
                                         @csrf
@@ -554,15 +548,17 @@
 
                     <hr style="margin: 16px 0;">
 
-                    {{-- Form upload foto baru --}}
                     <div style="font-size:13px; font-weight:600; color:#374151; margin-bottom:8px;">
                         <i class="icon-copy bi bi-cloud-upload-fill mr-1"></i>Tambah Foto
+                        <span class="text-danger">*</span>
+                        <small class="text-muted" style="font-weight:400; font-size:11px; margin-left:4px;">Wajib diunggah
+                            minimal 1 foto sebelum menyelesaikan tugas.</small>
                     </div>
 
                     @if ($errors->has('foto.*'))
                         <div class="alert alert-danger" style="font-size:12px; padding:8px 12px;">
                             @foreach ($errors->get('foto.*') as $err)
-                                <div><i class="icon-copy bi bi-exclamation-triangle-fill mr-1"></i>❌ {{ $err[0] }}
+                                <div><i class="icon-copy bi bi-exclamation-triangle-fill mr-1"></i>{{ $err[0] }}
                                 </div>
                             @endforeach
                         </div>
@@ -572,29 +568,25 @@
                         enctype="multipart/form-data" id="formUploadFoto">
                         @csrf
 
-                        {{-- Drop zone --}}
                         <div class="drop-zone" id="dropZone" onclick="document.getElementById('inputFoto').click()">
-                            <i class="icon-copy bi bi-cloud-upload mr-2"></i>📁 Klik atau seret foto ke sini<br>
+                            <i class="icon-copy bi bi-cloud-upload mr-2"></i>Klik atau seret foto ke sini<br>
                             <span style="font-size:11px;">JPG, PNG, WEBP — Maks. 5MB per foto</span>
                         </div>
                         <input type="file" id="inputFoto" name="foto[]" multiple accept="image/*"
                             style="display:none;" onchange="previewFotos(this)">
 
-                        {{-- Preview sebelum upload --}}
                         <div class="preview-list" id="previewList"></div>
 
-                        {{-- Kontainer input tersembunyi untuk keterangan --}}
                         <div id="keteranganInputs"></div>
 
                         <button type="submit" class="btn btn-primary btn-sm mt-10" id="btnUpload"
                             style="display:none;">
-                            <i class="icon-copy bi bi-cloud-upload-fill mr-1"></i>📤 Upload Foto
+                            <i class="icon-copy bi bi-cloud-upload-fill mr-1"></i>Upload Foto
                         </button>
                     </form>
                 </div>
             </div>
 
-            {{-- KOLOM KANAN: Form Selesaikan --}}
             <div class="col-right-responsive">
                 <div class="card-box pd-20">
                     <div class="section-head"><i class="icon-copy bi bi-check2-circle mr-2"></i>Selesaikan Penanganan
@@ -602,7 +594,7 @@
 
                     @if ($errors->has('keterangan'))
                         <div class="alert alert-danger" style="font-size:13px;">
-                            <i class="icon-copy bi bi-exclamation-triangle-fill mr-1"></i>❌
+                            <i class="icon-copy bi bi-exclamation-triangle-fill mr-1"></i>
                             {{ $errors->first('keterangan') }}
                         </div>
                     @endif
@@ -621,29 +613,23 @@
                         </div>
 
                         <button type="button" class="btn btn-success btn-block btn-selesaikan">
-                            <i class="icon-copy bi bi-check2-circle mr-1"></i>✅ Tandai Selesai
+                            <i class="icon-copy bi bi-check2-circle mr-1"></i>Tandai Selesai
                         </button>
                     </form>
-
-                    <hr style="margin: 20px 0;">
-
-                    <div style="font-size:12px; color:#94a3b8; word-break: break-all;">
-                        <strong><i class="icon-copy bi bi-device-ssd mr-1"></i>GUID Perangkat:</strong><br>
-                        <span style="font-family:monospace; font-size: 11px;">{{ $alarm->panicButton->GUID }}</span>
-                    </div>
                 </div>
             </div>
         </div>
 
         {{-- Lightbox --}}
         <div id="lightbox" onclick="closeLightbox()">
-            <span class="lb-close" onclick="closeLightbox()">✕</span>
+            <span class="lb-close" onclick="closeLightbox()"><i class="bi bi-x-lg"></i></span>
             <img id="lbImg" src="" alt="Foto Dokumentasi">
             <div class="lb-caption" id="lbCaption"></div>
         </div>
 
         <script>
             const startTime = {{ $alarm->updated_at->timestamp }};
+            const fotoSudahAda = {{ $alarm->dokumenFoto->count() }};
 
             function updateTimer() {
                 const diff = Math.floor(Date.now() / 1000) - startTime;
@@ -680,7 +666,7 @@
                             attribution: '© OpenStreetMap'
                         }).addTo(map);
                         L.marker([LAT, LNG]).addTo(map)
-                            .bindPopup('<i class="icon-copy bi bi-exclamation-triangle-fill text-danger mr-1"></i>🚨 ' +
+                            .bindPopup('<i class="bi bi-exclamation-triangle-fill text-danger mr-1"></i> ' +
                                 NAMA).openPopup();
                     };
                     document.head.appendChild(script);
@@ -719,7 +705,7 @@
                         <input type="text" placeholder="Keterangan (opsional)"
                                id="ket_${index}" oninput="syncKeterangan()">
                         <button type="button" class="btn-remove-preview"
-                                onclick="removePreview(${index})"><i class="icon-copy bi bi-x"></i></button>
+                                onclick="removePreview(${index})"><i class="bi bi-x"></i></button>
                     `;
                         list.appendChild(item);
                     };
@@ -802,6 +788,22 @@
                             return;
                         }
 
+                        const totalFoto = fotoSudahAda + selectedFiles.length;
+                        if (totalFoto === 0) {
+                            Swal.fire({
+                                title: 'Foto Dokumentasi Wajib!',
+                                text: 'Harap unggah minimal 1 foto dokumentasi sebelum menyelesaikan tugas.',
+                                icon: 'warning',
+                                confirmButtonColor: '#265ed7'
+                            });
+                            document.getElementById('dropZone').classList.add('required-error');
+                            document.getElementById('dropZone').scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                            return;
+                        }
+
                         Swal.fire({
                             title: 'Selesaikan Tugas?',
                             html: `Anda akan menandai tugas ini sebagai <strong>SELESAI</strong><br>Pastikan kondisi pelanggan sudah aman.`,
@@ -819,6 +821,10 @@
                         });
                     });
                 }
+
+                document.getElementById('inputFoto').addEventListener('change', function() {
+                    document.getElementById('dropZone').classList.remove('required-error');
+                });
 
                 document.querySelectorAll('.btn-hapus-foto-trigger').forEach(btn => {
                     btn.addEventListener('click', function(e) {

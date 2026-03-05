@@ -149,13 +149,6 @@
             color: var(--text-primary);
         }
 
-        .profile-guid {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-family: monospace;
-            letter-spacing: .5px;
-        }
-
         .dropdown {
             position: absolute;
             top: calc(100% + 10px);
@@ -1422,10 +1415,6 @@
             .profile-name {
                 font-size: 14px;
             }
-
-            .profile-guid {
-                font-size: 10px;
-            }
         }
 
         @media(max-width: 400px) {
@@ -1469,7 +1458,6 @@
                     <div class="avatar">{{ strtoupper(substr($user->name, 0, 2)) }}</div>
                     <div>
                         <div class="profile-name">{{ $user->name }}</div>
-                        <div class="profile-guid">{{ $panicButton?->GUID ?? 'Panic button belum aktif' }}</div>
                     </div>
                     <span style="color:var(--text-muted);font-size:11px;margin-left:4px;"><i
                             class="bi bi-chevron-down"></i></span>

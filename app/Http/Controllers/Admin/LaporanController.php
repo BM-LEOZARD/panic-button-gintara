@@ -31,9 +31,10 @@ class LaporanController extends Controller
 
         $totalAlarm  = $laporan->count();
         $totalDurasi = $laporan->sum(function ($r) {
-            if (!$r->panicButton->timestamp || !$r->waktu_selesai) return 0;
-            $epochSelesai = \Carbon\Carbon::parse($r->waktu_selesai)->setTimezone('Asia/Jakarta')->timestamp;
-            return max(0, $epochSelesai - $r->panicButton->timestamp);
+            if (!$r->getRawOriginal('waktu_trigger') || !$r->getRawOriginal('waktu_selesai')) return 0;
+            $tTrigger = \Carbon\Carbon::parse($r->getRawOriginal('waktu_trigger'));
+            $tSelesai  = \Carbon\Carbon::parse($r->getRawOriginal('waktu_selesai'));
+            return max(0, $tSelesai->timestamp - $tTrigger->timestamp);
         });
         $rerataDurasi = $totalAlarm > 0 ? intdiv($totalDurasi, $totalAlarm) : 0;
         $totalFoto    = $laporan->sum(fn($r) => $r->dokumenFoto->count());
@@ -62,7 +63,7 @@ class LaporanController extends Controller
             ->where('user_id', $admin->id)
             ->where('status', 'Selesai')
             ->firstOrFail();
-
+ 
         return view('admin.laporan.show', compact('alarm'));
     }
 }

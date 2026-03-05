@@ -19,6 +19,8 @@
             'Jika Anda tidak merasa mengubah password, segera hubungi admin wilayah Anda dan amankan akun Anda.',
     ])
 
+    @include('emails.partials.login-button')
+
     <p style="margin:0;font-size:14px;color:#64748b;line-height:1.7;">
         Tips keamanan: Jangan bagikan password Anda kepada siapapun, termasuk kepada admin.
     </p>

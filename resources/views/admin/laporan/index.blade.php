@@ -21,16 +21,6 @@
                 font-weight: 600;
             }
 
-            .epoch-box {
-                background: #1e293b;
-                color: #86efac;
-                font-family: monospace;
-                font-size: 11px;
-                padding: 2px 8px;
-                border-radius: 4px;
-                display: inline-block;
-            }
-
             .stat-card {
                 border-radius: 12px;
                 padding: 18px 20px;
@@ -182,41 +172,38 @@
                         <tbody>
                             @foreach ($laporan as $i => $r)
                                 @php
-                                    $epochTrigger = $r->panicButton->timestamp;
-                                    $epochSelesai = $r->waktu_selesai
-                                        ? \Carbon\Carbon::parse($r->waktu_selesai)->setTimezone('Asia/Jakarta')
-                                            ->timestamp
+                                    $tTrigger = $r->getRawOriginal('waktu_trigger')
+                                        ? \Carbon\Carbon::parse($r->getRawOriginal('waktu_trigger'))
+                                        : null;
+                                    $tSelesai = $r->getRawOriginal('waktu_selesai')
+                                        ? \Carbon\Carbon::parse($r->getRawOriginal('waktu_selesai'))
                                         : null;
                                     $durasi =
-                                        $epochTrigger && $epochSelesai ? max(0, $epochSelesai - $epochTrigger) : null;
+                                        $tTrigger && $tSelesai
+                                            ? max(0, $tSelesai->timestamp - $tTrigger->timestamp)
+                                            : null;
                                 @endphp
                                 <tr>
                                     <td style="font-size:12px; color:#94a3b8;">{{ $i + 1 }}</td>
                                     <td class="weight-600">{{ $r->pelanggan->user->name }}</td>
                                     <td>
-                                        <span class="badge-wilayah"><i
-                                                class="icon-copy bi bi-pin-map-fill mr-1"></i>{{ $r->panicButton->wilayah->nama }}</span>
+                                        <span class="badge-wilayah">
+                                            <i
+                                                class="icon-copy bi bi-pin-map-fill mr-1"></i>{{ $r->panicButton->wilayah->nama }}
+                                        </span>
                                     </td>
-
                                     <td style="font-size:12px;">
                                         <i class="icon-copy bi bi-clock-history mr-1"></i>
-                                        {{ $epochTrigger
-                                            ? \Carbon\Carbon::createFromTimestamp($epochTrigger)->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s')
-                                            : '-' }}
+                                        {{ $tTrigger ? $tTrigger->format('d M Y, H:i:s') : '-' }}
                                     </td>
-
                                     <td style="font-size:12px;">
                                         <i class="icon-copy bi bi-check-circle-fill text-success mr-1"></i>
-                                        {{ $epochSelesai
-                                            ? \Carbon\Carbon::createFromTimestamp($epochSelesai)->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s')
-                                            : '-' }}
+                                        {{ $tSelesai ? $tSelesai->format('d M Y, H:i:s') : '-' }}
                                     </td>
-
                                     <td style="font-family:monospace; font-size:12px;">
                                         <i class="icon-copy bi bi-hourglass-split mr-1"></i>
                                         {{ $durasi !== null ? gmdate('H:i:s', $durasi) : '-' }}
                                     </td>
-
                                     <td>
                                         <a href="{{ route('admin.laporan.show', $r->id) }}" class="btn btn-xs btn-primary">
                                             <i class="icon-copy bi bi-eye-fill mr-1"></i>Detail
@@ -239,7 +226,6 @@
             @endif
         </div>
 
-        {{-- Lightbox --}}
         <div id="lightbox" onclick="closeLightbox()"
             style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:9999;
                 align-items:center; justify-content:center; flex-direction:column;">

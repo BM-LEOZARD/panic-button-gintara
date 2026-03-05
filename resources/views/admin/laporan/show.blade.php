@@ -34,16 +34,6 @@
                 margin-bottom: 14px;
             }
 
-            .epoch-box {
-                background: #1e293b;
-                color: #86efac;
-                font-family: monospace;
-                font-size: 11px;
-                padding: 2px 8px;
-                border-radius: 4px;
-                display: inline-block;
-            }
-
             .foto-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -99,18 +89,21 @@
                             class="icon-copy bi bi-person-fill mr-1"></i>{{ $alarm->pelanggan->user->name }}</small>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ route('admin.laporan.index') }}" class="btn btn-secondary btn-sm"><i
-                            class="icon-copy bi bi-arrow-left mr-1"></i>Kembali</a>
+                    <a href="{{ route('admin.laporan.index') }}" class="btn btn-secondary btn-sm">
+                        <i class="icon-copy bi bi-arrow-left mr-1"></i>Kembali
+                    </a>
                 </div>
             </div>
         </div>
 
         @php
-            $epochTrigger = $alarm->panicButton->timestamp;
-            $epochSelesai = $alarm->waktu_selesai
-                ? \Carbon\Carbon::parse($alarm->waktu_selesai)->setTimezone('Asia/Jakarta')->timestamp
+            $tTrigger = $alarm->getRawOriginal('waktu_trigger')
+                ? \Carbon\Carbon::parse($alarm->getRawOriginal('waktu_trigger'))
                 : null;
-            $durasi = $epochTrigger && $epochSelesai ? max(0, $epochSelesai - $epochTrigger) : null;
+            $tSelesai = $alarm->getRawOriginal('waktu_selesai')
+                ? \Carbon\Carbon::parse($alarm->getRawOriginal('waktu_selesai'))
+                : null;
+            $durasi = $tTrigger && $tSelesai ? max(0, $tSelesai->timestamp - $tTrigger->timestamp) : null;
         @endphp
 
         <div class="row">
@@ -152,13 +145,7 @@
                             </div>
                             <div class="info-row">
                                 <div class="info-label"><i class="icon-copy bi bi-pin-map-fill mr-1"></i>Wilayah</div>
-                                <div class="info-value">
-                                    {{ $alarm->panicButton->wilayah->nama }}
-                                    <span
-                                        style="font-size:11px; color:#265ed7; background:#e7ebf5; border-radius:50px; padding:2px 8px; margin-left:4px;">
-                                        {{ $alarm->panicButton->wilayah->kode_wilayah }}
-                                    </span>
-                                </div>
+                                <div class="info-value">{{ $alarm->panicButton->wilayah->nama }}</div>
                             </div>
                         </div>
                     </div>
@@ -167,36 +154,39 @@
                 <div class="card-box pd-20 mb-20">
                     <div class="section-head"><i class="icon-copy bi bi-stopwatch-fill mr-2"></i>Waktu Penanganan</div>
                     <div class="info-row">
-                        <div class="info-label"><i class="icon-copy bi bi-clock-history mr-1"></i>Waktu Trigger
+                        <div class="info-label">
+                            <i class="icon-copy bi bi-clock-history mr-1"></i>Waktu Trigger
                         </div>
                         <div class="info-value">
                             <i class="icon-copy bi bi-exclamation-triangle-fill text-danger mr-1"></i>
-                            {{ $epochTrigger
-                                ? \Carbon\Carbon::createFromTimestamp($epochTrigger)->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s') . ' WIB'
-                                : '-' }}
+                            {{ $tTrigger ? $tTrigger->format('d M Y, H:i:s') . ' WIB' : '-' }}
                         </div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label"><i class="icon-copy bi bi-check-circle-fill mr-1"></i>Waktu Selesai</div>
+                        <div class="info-label">
+                            <i class="icon-copy bi bi-check-circle-fill mr-1"></i>Waktu Selesai
+                        </div>
                         <div class="info-value">
                             <i class="icon-copy bi bi-check-circle-fill text-success mr-1"></i>
-                            {{ $epochSelesai
-                                ? \Carbon\Carbon::createFromTimestamp($epochSelesai)->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s') . ' WIB'
-                                : '-' }}
+                            {{ $tSelesai ? $tSelesai->format('d M Y, H:i:s') . ' WIB' : '-' }}
                         </div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label"><i class="icon-copy bi bi-hourglass-split mr-1"></i>Total Durasi Penanganan
+                        <div class="info-label">
+                            <i class="icon-copy bi bi-hourglass-split mr-1"></i>Total Durasi Penanganan
                         </div>
                         <div class="info-value" style="font-family:monospace; font-size:20px; color:#d97706;">
-                            <i
-                                class="icon-copy bi bi-clock-fill mr-1"></i>{{ $durasi !== null ? gmdate('H:i:s', $durasi) : '-' }}
+                            <i class="icon-copy bi bi-clock-fill mr-1"></i>
+                            {{ $durasi !== null ? gmdate('H:i:s', $durasi) : '-' }}
                         </div>
                     </div>
                     <div class="info-row">
                         <div class="info-label"><i class="icon-copy bi bi-info-circle-fill mr-1"></i>Status</div>
-                        <div class="info-value"><span class="badge-selesai"><i
-                                    class="icon-copy bi bi-check-circle-fill mr-1"></i>Selesai</span></div>
+                        <div class="info-value">
+                            <span class="badge-selesai">
+                                <i class="icon-copy bi bi-check-circle-fill mr-1"></i>Selesai
+                            </span>
+                        </div>
                     </div>
                     <div class="info-row">
                         <div class="info-label"><i class="icon-copy bi bi-pencil-square mr-1"></i>Keterangan Penanganan
@@ -243,20 +233,6 @@
                             </div>
                         </div>
                     @endif
-                </div>
-
-                <div class="card-box pd-20 mb-20">
-                    <div class="section-head"><i class="icon-copy bi bi-device-ssd mr-2"></i>Info Perangkat</div>
-                    <div class="info-row">
-                        <div class="info-label"><i class="icon-copy bi bi-upc-scan mr-1"></i>GUID Perangkat</div>
-                        <div class="info-value" style="font-family:monospace; font-size:12px; word-break:break-all;">
-                            {{ $alarm->panicButton->GUID ?? '-' }}
-                        </div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label"><i class="icon-copy bi bi-person-workspace mr-1"></i>Ditangani Oleh</div>
-                        <div class="info-value">{{ $alarm->ditangani_oleh ?? '-' }}</div>
-                    </div>
                 </div>
 
             </div>

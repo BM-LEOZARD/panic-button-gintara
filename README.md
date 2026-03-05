@@ -138,19 +138,33 @@ Perintah ini membuat symbolic link untuk folder `storage/app/public` ke `public/
 Pastikan konfigurasi di `.env`:
 
 ```env
+# Timezone
+APP_TIMEZONE=Asia/Jakarta
+
 # Fonnte (WhatsApp API)
 FONNTE_TOKEN=your_token_here
 
 # MQTT Configuration
 MQTT_HOST=broker.emqx.io
 MQTT_PORT=1883
+MQTT_TOPIC=
+MQTT_CLIENT_ID_PREFIX=
 
 # Reverb (WebSocket)
+BROADCAST_CONNECTION=reverb
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
+
 REVERB_APP_ID=panic-button-app
 REVERB_APP_KEY=panicbuttonkey123
 REVERB_APP_SECRET=panicbuttonsecret123
 REVERB_HOST=127.0.0.1
 REVERB_PORT=9090
+
+VITE_REVERB_APP_KEY="${REVERB_APP_KEY}"
+VITE_REVERB_HOST="${REVERB_HOST}"
+VITE_REVERB_PORT="${REVERB_PORT}"
+VITE_REVERB_SCHEME="${REVERB_SCHEME}"
 
 # Mail Configuration
 MAIL_MAILER=smtp
@@ -158,6 +172,9 @@ MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME=your_email@gmail.com
 MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=your_email@gmail.com
+MAIL_FROM_NAME="app name"
 ```
 
 ## 🏃 Running Application

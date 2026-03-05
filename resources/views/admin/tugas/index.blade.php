@@ -68,23 +68,10 @@
                 min-height: 0;
             }
 
-            .scrollable-content::-webkit-scrollbar {
-                width: 6px;
-            }
-
-            .scrollable-content::-webkit-scrollbar-track {
-                background: #f1f1f1;
-                border-radius: 10px;
-            }
-
-            .scrollable-content::-webkit-scrollbar-thumb {
-                background: #cbd5e1;
-                border-radius: 10px;
-            }
-
-            .scrollable-content::-webkit-scrollbar-thumb:hover {
-                background: #94a3b8;
-            }
+            .scrollable-content::-webkit-scrollbar { width: 6px; }
+            .scrollable-content::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+            .scrollable-content::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+            .scrollable-content::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
             .alarm-card {
                 border: 2px solid #fecaca;
@@ -96,13 +83,8 @@
                 transition: box-shadow .2s;
             }
 
-            .alarm-card:last-child {
-                margin-bottom: 0;
-            }
-
-            .alarm-card:hover {
-                box-shadow: 0 4px 20px rgba(220, 38, 38, .12);
-            }
+            .alarm-card:last-child { margin-bottom: 0; }
+            .alarm-card:hover { box-shadow: 0 4px 20px rgba(220, 38, 38, .12); }
 
             .alarm-card .pulse-dot {
                 display: inline-block;
@@ -116,17 +98,8 @@
             }
 
             @keyframes pulse {
-
-                0%,
-                100% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-
-                50% {
-                    opacity: .5;
-                    transform: scale(1.4);
-                }
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50%       { opacity: .5; transform: scale(1.4); }
             }
 
             .tugas-saya-card {
@@ -137,9 +110,7 @@
                 margin-bottom: 12px;
             }
 
-            .tugas-saya-card:last-child {
-                margin-bottom: 0;
-            }
+            .tugas-saya-card:last-child { margin-bottom: 0; }
 
             .nama-pelanggan {
                 font-size: 15px;
@@ -169,10 +140,7 @@
                 align-items: center;
             }
 
-            .empty-state .icon {
-                font-size: 48px;
-                margin-bottom: 12px;
-            }
+            .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
 
             .section-title {
                 font-size: 13px;
@@ -200,10 +168,7 @@
                 display: inline-block;
             }
 
-            .counter-badge.primary {
-                background: #dbeafe;
-                color: #1d4ed8;
-            }
+            .counter-badge.primary { background: #dbeafe; color: #1d4ed8; }
 
             .countdown {
                 font-family: monospace;
@@ -212,87 +177,35 @@
                 color: #dc2626;
             }
 
-            .action-container {
-                flex-shrink: 0;
-            }
+            .action-container { flex-shrink: 0; }
 
-            .row-responsive {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 0 -10px;
-            }
-
-            .col-responsive {
-                flex: 1 1 50%;
-                padding: 0 10px;
-                min-width: 280px;
-            }
+            .row-responsive { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+            .col-responsive { flex: 1 1 50%; padding: 0 10px; min-width: 280px; }
 
             @media (min-width: 1200px) {
-
-                .alarm-card-container,
-                .tugas-card-container {
-                    height: 550px;
-                }
+                .alarm-card-container, .tugas-card-container { height: 550px; }
             }
 
             @media (max-width: 991px) {
-                .col-responsive {
-                    flex: 1 1 100%;
-                    margin-bottom: 20px;
-                }
-
-                .col-responsive:last-child {
-                    margin-bottom: 0;
-                }
+                .col-responsive { flex: 1 1 100%; margin-bottom: 20px; }
+                .col-responsive:last-child { margin-bottom: 0; }
             }
 
             @media (max-width: 768px) {
-
-                .alarm-card-container,
-                .tugas-card-container {
-                    height: 400px;
-                }
-
-                .alarm-card,
-                .tugas-saya-card {
-                    padding: 12px;
-                }
-
-                .nama-pelanggan {
-                    font-size: 14px;
-                }
-
-                .btn-sm {
-                    padding: 4px 8px;
-                    font-size: 11px;
-                }
-
-                .badge-wilayah {
-                    font-size: 10px;
-                    padding: 2px 8px;
-                }
-
-                .empty-state {
-                    padding: 30px 10px;
-                }
-
-                .empty-state .icon {
-                    font-size: 36px;
-                }
+                .alarm-card-container, .tugas-card-container { height: 400px; }
+                .alarm-card, .tugas-saya-card { padding: 12px; }
+                .nama-pelanggan { font-size: 14px; }
+                .btn-sm { padding: 4px 8px; font-size: 11px; }
+                .badge-wilayah { font-size: 10px; padding: 2px 8px; }
+                .empty-state { padding: 30px 10px; }
+                .empty-state .icon { font-size: 36px; }
             }
 
             @media (max-width: 480px) {
-
-                .alarm-card-container,
-                .tugas-card-container {
-                    height: 350px;
-                }
+                .alarm-card-container, .tugas-card-container { height: 350px; }
             }
 
-            .card-box {
-                margin-bottom: 0;
-            }
+            .card-box { margin-bottom: 0; }
 
             .alarm-card.disabled-card {
                 opacity: 0.6;
@@ -300,9 +213,7 @@
                 border-color: #cbd5e1;
             }
 
-            .alarm-card.disabled-card:hover {
-                box-shadow: none;
-            }
+            .alarm-card.disabled-card:hover { box-shadow: none; }
 
             .btn:disabled {
                 cursor: not-allowed;
@@ -386,7 +297,7 @@
 
         @php
             $sedangMemprosesTugas = $tugasSaya->count() > 0;
-            $totalMenunggu = $tugasMenunggu->count();
+            $totalMenunggu        = $tugasMenunggu->count();
         @endphp
 
         <div class="row-responsive">
@@ -411,6 +322,12 @@
 
                         <div class="scrollable-content">
                             @forelse ($tugasMenunggu as $alarm)
+                                @php
+                                    $waktuTrigger = $alarm->getRawOriginal('waktu_trigger')
+                                        ? \Carbon\Carbon::parse($alarm->getRawOriginal('waktu_trigger'))
+                                        : null;
+                                    $triggerEpoch = $waktuTrigger ? $waktuTrigger->timestamp : 0;
+                                @endphp
                                 <div class="alarm-card {{ $sedangMemprosesTugas ? 'disabled-card' : '' }}">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div class="flex-grow-1" style="min-width: 0;">
@@ -430,16 +347,12 @@
                                                     style="max-width: 150px;">
                                                     {{ $alarm->panicButton->wilayah->nama }}
                                                 </span>
-                                                <span class="badge-wilayah ml-1 align-middle">
-                                                    {{ $alarm->panicButton->wilayah->kode_wilayah }}
-                                                </span>
                                             </div>
                                             <div class="meta">
                                                 <i class="icon-copy bi bi-telephone-fill mr-1"></i>
                                                 {{ $alarm->pelanggan->user->no_hp }}
                                                 <i class="icon-copy bi bi-house-door-fill ml-2 mr-1"></i>
-                                                Blok
-                                                {{ $alarm->panicButton->GetBlockID }}/{{ $alarm->panicButton->GetNumber }}
+                                                Blok {{ $alarm->panicButton->GetBlockID }}/{{ $alarm->panicButton->GetNumber }}
                                             </div>
                                             @if ($alarm->lokasi)
                                                 <div class="meta">
@@ -452,22 +365,19 @@
                                             <div class="meta mt-1">
                                                 <i class="icon-copy bi bi-clock-history mr-1"></i>Trigger:
                                                 <strong>
-                                                    {{ $alarm->panicButton->timestamp
-                                                        ? \Carbon\Carbon::createFromTimestamp($alarm->panicButton->timestamp, 'Asia/Jakarta')->format('d M Y, H:i:s') .
-                                                            ' WIB'
+                                                    {{ $waktuTrigger
+                                                        ? $waktuTrigger->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s') . ' WIB'
                                                         : '-' }}
                                                 </strong>
                                             </div>
                                             @if (!$sedangMemprosesTugas)
                                                 <div class="meta mt-1">
-                                                    <span class="countdown"
-                                                        data-trigger="{{ $alarm->panicButton->timestamp ?? 0 }}"></span>
+                                                    <span class="countdown" data-trigger="{{ $triggerEpoch }}"></span>
                                                 </div>
                                             @endif
                                             @if ($totalMenunggu > 1)
                                                 <div class="meta mt-1">
-                                                    <span class="badge badge-secondary">Antrian
-                                                        #{{ $loop->iteration }}</span>
+                                                    <span class="badge badge-secondary">Antrian #{{ $loop->iteration }}</span>
                                                 </div>
                                             @endif
                                         </div>
@@ -520,6 +430,14 @@
 
                         <div class="scrollable-content">
                             @forelse ($tugasSaya as $alarm)
+                                @php
+                                    $waktuTriggerDiproses = $alarm->getRawOriginal('waktu_trigger')
+                                        ? \Carbon\Carbon::parse($alarm->getRawOriginal('waktu_trigger'))
+                                        : null;
+                                    $triggerEpochDiproses = $waktuTriggerDiproses
+                                        ? $waktuTriggerDiproses->timestamp
+                                        : 0;
+                                @endphp
                                 <div class="tugas-saya-card">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div class="flex-grow-1" style="min-width: 0;">
@@ -533,24 +451,22 @@
                                                     style="max-width: 150px;">
                                                     {{ $alarm->panicButton->wilayah->nama }}
                                                 </span>
-                                                <span
-                                                    class="badge-wilayah ml-1">{{ $alarm->panicButton->wilayah->kode_wilayah }}</span>
                                             </div>
                                             <div class="meta">
-                                                <i
-                                                    class="icon-copy bi bi-telephone-fill mr-1"></i>{{ $alarm->pelanggan->user->no_hp }}
+                                                <i class="icon-copy bi bi-telephone-fill mr-1"></i>{{ $alarm->pelanggan->user->no_hp }}
                                                 <i class="icon-copy bi bi-house-door-fill ml-2 mr-1"></i>Blok
                                                 {{ $alarm->panicButton->GetBlockID }}/{{ $alarm->panicButton->GetNumber }}
                                             </div>
                                             <div class="meta">
                                                 <i class="icon-copy bi bi-stopwatch-fill mr-1"></i>Diambil sejak:
-                                                <strong>{{ \Carbon\Carbon::parse($alarm->updated_at, 'Asia/Jakarta')->format('H:i:s') }}
-                                                    WIB</strong>
+                                                <strong>
+                                                    {{ \Carbon\Carbon::parse($alarm->updated_at)->setTimezone('Asia/Jakarta')->format('H:i:s') }} WIB
+                                                </strong>
                                             </div>
                                             <div class="meta">
                                                 <i class="icon-copy bi bi-clock-history mr-1"></i>Durasi:
                                                 <span class="tugas-durasi"
-                                                    data-trigger="{{ $alarm->panicButton->timestamp ?? 0 }}"
+                                                    data-trigger="{{ $triggerEpochDiproses }}"
                                                     data-updated="{{ $alarm->updated_at->timestamp }}">
                                                 </span>
                                             </div>
@@ -576,9 +492,11 @@
             </div>
         </div>
 
+        {{-- Tabel Riwayat --}}
         @if ($riwayat->count() > 0)
             <div class="card-box pd-20 mt-30" style="margin-top: 30px;">
-                <div class="section-title"><i class="icon-copy bi bi-archive-fill mr-2"></i>Riwayat Terakhir (10 Terakhir)
+                <div class="section-title">
+                    <i class="icon-copy bi bi-archive-fill mr-2"></i>Riwayat Terakhir (10 Terakhir)
                 </div>
                 <div class="table-responsive">
                     <table class="data-table table nowrap">
@@ -594,34 +512,36 @@
                         </thead>
                         <tbody>
                             @foreach ($riwayat as $r)
+                                @php
+                                    $rTrigger = $r->getRawOriginal('waktu_trigger')
+                                        ? \Carbon\Carbon::parse($r->getRawOriginal('waktu_trigger'))
+                                        : null;
+                                    $rSelesai = $r->getRawOriginal('waktu_selesai')
+                                        ? \Carbon\Carbon::parse($r->getRawOriginal('waktu_selesai'))
+                                        : null;
+                                    $rDurasi = $rTrigger && $rSelesai
+                                        ? max(0, $rSelesai->timestamp - $rTrigger->timestamp)
+                                        : null;
+                                @endphp
                                 <tr>
                                     <td class="weight-600">{{ $r->pelanggan->user->name }}</td>
                                     <td>
                                         <span class="badge-wilayah">{{ $r->panicButton->wilayah->nama }}</span>
                                     </td>
                                     <td style="font-size:12px;">
-                                        {{ $r->panicButton->timestamp
-                                            ? \Carbon\Carbon::createFromTimestamp($r->panicButton->timestamp, 'Asia/Jakarta')->format('d M Y, H:i:s')
-                                            : '-' }}
+                                        {{ $rTrigger ? $rTrigger->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s') : '-' }}
                                     </td>
                                     <td style="font-size:12px;">
-                                        {{ $r->waktu_selesai ? \Carbon\Carbon::parse($r->waktu_selesai, 'Asia/Jakarta')->format('d M Y, H:i:s') : '-' }}
+                                        {{ $rSelesai ? $rSelesai->setTimezone('Asia/Jakarta')->format('d M Y, H:i:s') : '-' }}
                                     </td>
                                     <td style="font-size:12px; font-family:monospace;">
-                                        @if ($r->panicButton->timestamp && $r->waktu_selesai)
-                                            @php
-                                                $epochTrigger = $r->panicButton->timestamp;
-                                                $epochSelesai = \Carbon\Carbon::parse($r->waktu_selesai, 'Asia/Jakarta')
-                                                    ->timestamp;
-                                                $durasi = $epochSelesai - $epochTrigger;
-                                            @endphp
-                                            {{ gmdate('H:i:s', max(0, $durasi)) }}
-                                        @else
-                                            -
-                                        @endif
+                                        {{ $rDurasi !== null ? gmdate('H:i:s', $rDurasi) : '-' }}
                                     </td>
-                                    <td><span class="badge-selesai"><i
-                                                class="icon-copy bi bi-check-circle-fill mr-1"></i>Selesai</span></td>
+                                    <td>
+                                        <span class="badge-selesai">
+                                            <i class="icon-copy bi bi-check-circle-fill mr-1"></i>Selesai
+                                        </span>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -632,18 +552,13 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-            function getCurrentEpochGMT7() {
-                const now = new Date();
-                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-                const gmt7 = new Date(utc + (7 * 60 * 60 * 1000));
-                return Math.floor(gmt7.getTime() / 1000);
-            }
-
             function updateCountdowns() {
+                const nowEpoch = Math.floor(Date.now() / 1000);
+
                 document.querySelectorAll('.countdown[data-trigger]').forEach(el => {
                     const trigger = parseInt(el.dataset.trigger);
                     if (!trigger) return;
-                    const diff = getCurrentEpochGMT7() - trigger;
+                    const diff = nowEpoch - trigger;
                     const h = Math.floor(diff / 3600);
                     const m = Math.floor((diff % 3600) / 60);
                     const s = diff % 60;
@@ -661,7 +576,7 @@
                     const updated = parseInt(el.dataset.updated);
                     if (!trigger && !updated) return;
                     const start = trigger || updated;
-                    const diff = getCurrentEpochGMT7() - start;
+                    const diff  = nowEpoch - start;
                     const h = Math.floor(diff / 3600);
                     const m = Math.floor((diff % 3600) / 60);
                     const s = diff % 60;
@@ -678,9 +593,9 @@
             updateCountdowns();
             setInterval(updateCountdowns, 1000);
 
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(function() {
-                    ['alert-success', 'alert-error'].forEach(function(id) {
+            document.addEventListener('DOMContentLoaded', function () {
+                setTimeout(function () {
+                    ['alert-success', 'alert-error'].forEach(function (id) {
                         const el = document.getElementById(id);
                         if (el) {
                             el.classList.remove('show');
@@ -691,7 +606,7 @@
                 }, 5000);
 
                 document.querySelectorAll('.btn-ambil-tugas').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
+                    btn.addEventListener('click', function (e) {
                         e.preventDefault();
 
                         if (this.disabled) {
@@ -721,9 +636,7 @@
                             cancelButtonText: 'Batal',
                             reverseButtons: true,
                             showLoaderOnConfirm: true,
-                            preConfirm: () => {
-                                form.submit();
-                            }
+                            preConfirm: () => { form.submit(); }
                         });
                     });
                 });

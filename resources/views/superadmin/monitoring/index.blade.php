@@ -12,56 +12,6 @@
                 z-index: 1;
             }
 
-            .stat-card {
-                border-radius: 12px;
-                padding: 18px 22px;
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                margin-bottom: 20px;
-            }
-
-            .stat-card .stat-icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 22px;
-                flex-shrink: 0;
-            }
-
-            .stat-card .stat-value {
-                font-size: 28px;
-                font-weight: 700;
-                line-height: 1;
-                color: #1e293b;
-            }
-
-            .stat-card .stat-label {
-                font-size: 12px;
-                color: #94a3b8;
-                font-weight: 500;
-                margin-top: 4px;
-            }
-
-            .stat-total .stat-icon {
-                background: #e7ebf5;
-            }
-
-            .stat-aman .stat-icon {
-                background: #dcfce7;
-            }
-
-            .stat-darurat .stat-icon {
-                background: #fee2e2;
-            }
-
-            .stat-diproses .stat-icon {
-                background: #dbeafe;
-            }
-
             .badge-aman {
                 background: #dcfce7;
                 color: #16a34a;
@@ -220,39 +170,63 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card-box stat-card stat-total">
-                    <div class="stat-icon"><i class="bi bi-broadcast" style="color:#265ed7;"></i></div>
-                    <div>
-                        <div class="stat-value" id="statSemua">—</div>
-                        <div class="stat-label">Total Perangkat</div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                <div class="card-box height-100-p widget-style3">
+                    <div class="d-flex flex-wrap">
+                        <div class="widget-data">
+                            <div class="weight-700 font-24 text-dark" id="statSemua">—</div>
+                            <div class="font-14 text-secondary weight-500">Total Perangkat</div>
+                        </div>
+                        <div class="widget-icon">
+                            <div class="icon" data-color="#265ed7">
+                                <i class="icon-copy fa fa-rss"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card-box stat-card stat-aman">
-                    <div class="stat-icon"><i class="bi bi-shield-check" style="color:#16a34a;"></i></div>
-                    <div>
-                        <div class="stat-value" id="statAman" style="color:#16a34a;">—</div>
-                        <div class="stat-label">Status Aman</div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                <div class="card-box height-100-p widget-style3">
+                    <div class="d-flex flex-wrap">
+                        <div class="widget-data">
+                            <div class="weight-700 font-24 text-dark" id="statAman">—</div>
+                            <div class="font-14 text-secondary weight-500">Status Aman</div>
+                        </div>
+                        <div class="widget-icon">
+                            <div class="icon" data-color="#09cc06">
+                                <i class="icon-copy bi bi-shield-check mr-1"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card-box stat-card stat-darurat">
-                    <div class="stat-icon"><i class="bi bi-exclamation-triangle-fill" style="color:#dc2626;"></i></div>
-                    <div>
-                        <div class="stat-value" id="statDarurat" style="color:#dc2626;">—</div>
-                        <div class="stat-label">Sedang Darurat</div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                <div class="card-box height-100-p widget-style3">
+                    <div class="d-flex flex-wrap">
+                        <div class="widget-data">
+                            <div class="weight-700 font-24 text-dark" id="statDarurat">—</div>
+                            <div class="font-14 text-secondary weight-500">Sedang Darurat</div>
+                        </div>
+                        <div class="widget-icon">
+                            <div class="icon" data-color="#e95959">
+                                <i class="icon-copy fa fa-exclamation-triangle"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card-box stat-card stat-diproses">
-                    <div class="stat-icon"><i class="bi bi-hourglass-split" style="color:#1d4ed8;"></i></div>
-                    <div>
-                        <div class="stat-value" id="statDiproses" style="color:#1d4ed8;">—</div>
-                        <div class="stat-label">Sedang Diproses</div>
+            <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                <div class="card-box height-100-p widget-style3">
+                    <div class="d-flex flex-wrap">
+                        <div class="widget-data">
+                            <div class="weight-700 font-24 text-dark" id="statDiproses">—</div>
+                            <div class="font-14 text-secondary weight-500">Sedang Diproses</div>
+                        </div>
+                        <div class="widget-icon">
+                            <div class="icon" data-color="#00eccf">
+                                <i class="icon-copy fa fa-hourglass-half"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
