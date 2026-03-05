@@ -266,7 +266,7 @@ AWr9JaTuECNHo4naZxHf
 | `FONNTE_TOKEN`   | Token Fonnte untuk WhatsApp | `ABc1DeFgHIJKl2mnOpQr` |
 | `MQTT_HOST`      | MQTT Broker Host            | `broker.emqx.io`       |
 | `REVERB_APP_KEY` | WebSocket App Key           | `abc123`    |
-| `MAIL_USERNAME`  | Email SMTP                  | `user@example.com`  |
+| `MAIL_USERNAME`  | Email SMTP                  | `user@gmail.com`  |
 | `DB_DATABASE`    | Nama database               | `panic-button` |
 
 ## 🚨 Common Issues & Solutions
